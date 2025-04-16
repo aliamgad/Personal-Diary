@@ -1,0 +1,17 @@
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\bin\Debug\net8.0-windows\Personal Diary Application.exe
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\bin\Debug\net8.0-windows\Personal Diary Application.deps.json
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\bin\Debug\net8.0-windows\Personal Diary Application.runtimeconfig.json
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\bin\Debug\net8.0-windows\Personal Diary Application.dll
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\bin\Debug\net8.0-windows\Personal Diary Application.pdb
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\Personal_Diary_Application.Login.resources
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\Personal_Diary_Application.Welcome_Menu.resources
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\Personal Diary Application.csproj.GenerateResource.cache
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\Personal Diary Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\Personal Diary Application.AssemblyInfoInputs.cache
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\Personal Diary Application.AssemblyInfo.cs
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\Personal Diary Application.csproj.CoreCompileInputs.cache
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\Personal Diary Application.dll
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\refint\Personal Diary Application.dll
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\Personal Diary Application.pdb
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\Personal Diary Application.genruntimeconfig.cache
+D:\Ali Stuff\College\FCIS\third year\second term\Courses\Software Engineering\Project\Phase 2\Personal Diary Application\obj\Debug\net8.0-windows\ref\Personal Diary Application.dll

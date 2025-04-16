@@ -59,8 +59,9 @@ namespace Personal_Diary_Application
             this.CreatedAt});
             this.dataGridView1.Location = new System.Drawing.Point(36, 123);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(343, 255);
+            this.dataGridView1.Size = new System.Drawing.Size(344, 255);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // title
             // 
@@ -86,6 +87,7 @@ namespace Personal_Diary_Application
             this.Controls.Add(this.dark_mode_btn);
             this.Name = "Home";
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

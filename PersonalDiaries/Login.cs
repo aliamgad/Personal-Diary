@@ -12,6 +12,7 @@ namespace PersonalDiaries
 {
     public partial class Login: Form
     {
+        public static string username = "hello";
         public Login()
         {
             InitializeComponent();

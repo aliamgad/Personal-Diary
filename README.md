@@ -158,4 +158,4 @@ CREATE TABLE Tags (
 
 ### <span style="color:rgb(255, 61, 154)">Drawing</span>
 
-![[Pasted image 20250416203227.png]]
+![alt text](image.png)

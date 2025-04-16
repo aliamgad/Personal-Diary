@@ -43,12 +43,12 @@ This document describes the relational schema for a diary application database, 
 Stores user information, including login credentials and preferences.
 
 ```sql
-CREATE TABLE Users (
-    userId INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Users(
+    userId INT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    darkMode BOOLEAN DEFAULT FALSE
+    darkMode CHAR(1) DEFAULT '0'
 );
 ```
 
@@ -65,11 +65,11 @@ CREATE TABLE Users (
 Stores diary entries, each linked to a user and optionally a tag.
 
 ```sql
-CREATE TABLE Diaries (
-    diaryId INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Diaries(
+    diaryId INT PRIMARY KEY,
     userId INT NOT NULL,
     title VARCHAR(100) NOT NULL,
-    text TEXT NOT NULL,
+    text clob NOT NULL,
     tagId INT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (userId) REFERENCES Users(userId) ON DELETE CASCADE,
@@ -91,11 +91,11 @@ CREATE TABLE Diaries (
 Stores one optional reminder per user.
 
 ```sql
-CREATE TABLE Reminders (
-    reminderId INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Reminders(
+    reminderId INT PRIMARY KEY,
     userId INT NOT NULL UNIQUE,
     reminderText VARCHAR(255) NOT NULL,
-    reminderDate DATETIME NOT NULL,
+    reminderDate TIMESTAMP NOT NULL,
     FOREIGN KEY (userId) REFERENCES Users(userId) ON DELETE CASCADE
 );
 ```
@@ -112,8 +112,8 @@ CREATE TABLE Reminders (
 Stores user-specific tags that can be applied to diaries.
 
 ```sql
-CREATE TABLE Tags (
-    tagId INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Tags(
+    tagId INT PRIMARY KEY,
     userId INT NOT NULL,
     tagName VARCHAR(50) NOT NULL,
     FOREIGN KEY (userId) REFERENCES Users(userId) ON DELETE CASCADE,

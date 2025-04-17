@@ -12,6 +12,9 @@ namespace PersonalDiaries
 {
     public partial class Home: Form
     {
+        public static bool isNew;
+        public static int userId;
+        public static int diaryId;
         public Home()
         {
             InitializeComponent();

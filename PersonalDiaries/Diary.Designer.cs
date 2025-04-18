@@ -69,6 +69,7 @@
             // 
             // comboBoxOFTags
             // 
+            this.comboBoxOFTags.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOFTags.FormattingEnabled = true;
             this.comboBoxOFTags.Location = new System.Drawing.Point(576, 39);
             this.comboBoxOFTags.Name = "comboBoxOFTags";

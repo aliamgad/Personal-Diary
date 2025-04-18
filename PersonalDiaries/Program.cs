@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Personal_Diary_Application;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace PersonalDiaries
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WelcomeMenu());
+            Application.Run(new Home());
         }
     }
 }

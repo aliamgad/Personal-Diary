@@ -15,10 +15,7 @@ namespace PersonalDiaries
     {
         string ordb = "Data source=orcl;User Id=scott; Password=tiger;";
         OracleConnection conn;
-
-
-        public static String username = "";
-        public static String password = "";
+        public static string username = "hello";
 
         public Login()
         {

@@ -18,7 +18,7 @@ namespace Personal_Diary_Application
         string ordb = "Data source=orcl;User Id=scott; Password=tiger;";
         OracleConnection conn;
 
-        public Login user;
+        
         public static string darkMode;
         public static bool isNew;
         public static int userId;
@@ -69,7 +69,7 @@ namespace Personal_Diary_Application
             dr2.Read();
             userId = Convert.ToInt32(dr2[0]);
             dr2.Close();
-            
+            conn.Dispose();
 
 
             //////////////////////////////////////////////////////////////////////////////
@@ -77,14 +77,14 @@ namespace Personal_Diary_Application
                             d.diaryid ,d.title, t.tagName,d.createdAt
                             FROM Diaries d
                             LEFT JOIN Tags t ON d.tagId = t.tagId
-                            WHERE d.userId = :id";
+                            WHERE d.userId =:id";
             OracleDataAdapter adapter = new OracleDataAdapter(cmdstr, ordb);
             adapter.SelectCommand.Parameters.Add("id", userId);
             DataSet ds = new DataSet();
             adapter.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
 
-            conn.Dispose();
+            
 
 
 
@@ -140,10 +140,12 @@ namespace Personal_Diary_Application
                 comboBox2.Items.Add(dr3[0]);
             }
 
-            comboBox2.SelectedIndex = 0;
+            //comboBox2.SelectedIndex = 0;
 
             dr3.Close();
             conn.Dispose();
+
+            
         }
 
         private void New_Diary_Click(object sender, EventArgs e)
@@ -170,7 +172,7 @@ namespace Personal_Diary_Application
                             d.diaryid,d.title, t.tagName,d.createdAt
                             FROM Diaries d
                             LEFT JOIN Tags t ON d.tagId = t.tagId
-                            WHERE d.userId = :id";
+                            WHERE d.userId =:id";
             }
             else
             {
@@ -178,11 +180,12 @@ namespace Personal_Diary_Application
                             d.diaryid,d.title, t.tagName,d.createdAt
                             FROM Diaries d
                             LEFT JOIN Tags t ON d.tagId = t.tagId
-                            WHERE d.userId = :id and t.tagname=:name";
+                            WHERE d.userId =:id and t.tagname=:name";
             }
             
             OracleDataAdapter adapter = new OracleDataAdapter(cmdstr, ordb);
             adapter.SelectCommand.Parameters.Add("id", userId);
+            
             if(comboBox2.SelectedItem.ToString() != "All")
             {
                 adapter.SelectCommand.Parameters.Add("name", comboBox2.SelectedItem.ToString());

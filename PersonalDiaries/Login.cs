@@ -1,4 +1,5 @@
 ﻿using Oracle.DataAccess.Client;
+using Personal_Diary_Application;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +16,8 @@ namespace PersonalDiaries
     {
         string ordb = "Data source=orcl;User Id=scott; Password=tiger;";
         OracleConnection conn;
-        public static string username = "hello";
-
+        public static string username;
+        
         public Login()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace PersonalDiaries
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = textBox1.Text.ToString();
+            username = textBox1.Text.ToString();
             string password = textBox2.Text.ToString();
 
             OracleCommand cmd = new OracleCommand();
@@ -46,6 +47,7 @@ namespace PersonalDiaries
 
             if (userExists > 0)
             {
+                
                 MessageBox.Show("Login successful!");
                 Home f = new Home();
                 f.Show();
@@ -56,9 +58,6 @@ namespace PersonalDiaries
             {
                 MessageBox.Show("Invalid username or password.");
             }
-
-
-            
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -17,7 +17,7 @@
 - Welcome Menu (transitions to "Login" & "Register forms")
 - Login (transition to Welcome Menu) - "login a new user"
 - Register (transition to Welcome Menu) - "register a new user"
-- Home (transition to Welcome menu "logout") : form (user menu) - "add button for dark mode" - "select a tag to show it's diaries" - "sort -> title alpha || date" - "browse and manage diary" - "add button for manage tags"
+- Home (transition to Welcome menu "logout") : form (user menu) - "add button for dark mode" - "select diaries associated with this tag " - "sort -> title alpha || date" - "browse and manage diary" - "add button for manage tags"
 - Writing Diary (Search a word inside a diary | edit diary) - "select tag" - "export diary"
 - Tag Form: add and delete tags
 - Reminder Form: "reminder to write diary in a SPECIFIC DATE & TIME"

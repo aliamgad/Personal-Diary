@@ -27,7 +27,7 @@ namespace Personal_Diary_Application
         {
             InitializeComponent();
         }
-
+        
         private void dark_mode_btn_CheckedChanged(object sender, EventArgs e)
         {
             conn = new OracleConnection(ordb);

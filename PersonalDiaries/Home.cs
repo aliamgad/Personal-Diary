@@ -19,6 +19,7 @@ namespace Personal_Diary_Application
         OracleConnection conn;
 
         public Login user;
+        public static string darkMode;
         public static bool isNew;
         public static int userId;
         public static int diaryId; 
@@ -100,8 +101,11 @@ namespace Personal_Diary_Application
             OracleDataReader dr = cmd.ExecuteReader();
 
             dr.Read();
-            
-            if (dr[0].ToString() == "1")
+
+            darkMode = dr[0].ToString();
+
+
+            if (darkMode == "1")
             {
                 dark_mode_btn.Checked = true;
                 this.BackColor = Color.FromArgb(34, 36, 49);

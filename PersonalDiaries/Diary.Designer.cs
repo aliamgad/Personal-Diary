@@ -38,9 +38,10 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(113, 39);
+            this.SaveButton.Location = new System.Drawing.Point(97, 32);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.Size = new System.Drawing.Size(64, 19);
             this.SaveButton.TabIndex = 0;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -48,10 +49,12 @@
             // 
             // textBox
             // 
-            this.textBox.Location = new System.Drawing.Point(99, 102);
+            this.textBox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox.Location = new System.Drawing.Point(85, 83);
+            this.textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox.Multiline = true;
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(560, 316);
+            this.textBox.Size = new System.Drawing.Size(481, 258);
             this.textBox.TabIndex = 1;
             // 
             // contextMenuStrip1
@@ -62,29 +65,33 @@
             // 
             // textBoxOFtitle
             // 
-            this.textBoxOFtitle.Location = new System.Drawing.Point(308, 66);
+            this.textBoxOFtitle.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxOFtitle.Location = new System.Drawing.Point(264, 54);
+            this.textBoxOFtitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxOFtitle.Name = "textBoxOFtitle";
-            this.textBoxOFtitle.Size = new System.Drawing.Size(156, 24);
+            this.textBoxOFtitle.Size = new System.Drawing.Size(134, 20);
             this.textBoxOFtitle.TabIndex = 2;
             // 
             // comboBoxOFTags
             // 
             this.comboBoxOFTags.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOFTags.FormattingEnabled = true;
-            this.comboBoxOFTags.Location = new System.Drawing.Point(576, 39);
+            this.comboBoxOFTags.Location = new System.Drawing.Point(494, 32);
+            this.comboBoxOFTags.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxOFTags.Name = "comboBoxOFTags";
-            this.comboBoxOFTags.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxOFTags.Size = new System.Drawing.Size(104, 21);
             this.comboBoxOFTags.TabIndex = 3;
             // 
             // Diary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(686, 366);
             this.Controls.Add(this.comboBoxOFTags);
             this.Controls.Add(this.textBoxOFtitle);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.SaveButton);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Diary";
             this.Text = "Diary";
             this.Load += new System.EventHandler(this.Diary_Load);

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
+using Personal_Diary_Application;
 
 namespace PersonalDiaries
 {
@@ -17,6 +18,7 @@ namespace PersonalDiaries
         string ordb = "Data source=orcl;User Id=scott;Password=tiger;";
         OracleConnection conn;
         public static int userId;
+        
         public Diary()
         {
             InitializeComponent();
@@ -103,6 +105,7 @@ namespace PersonalDiaries
                 MessageBox.Show("Updated");
             }
 
+
             Home form = new Home();
             form.Show();
             this.Hide();
@@ -114,11 +117,7 @@ namespace PersonalDiaries
 
         private void Diary_Load(object sender, EventArgs e)
         {
-            //test
-            Login.username = "ali";
-            Home.isNew = false;
-            Home.diaryId = 3;
-
+            
             conn = new OracleConnection(ordb);
             conn.Open();
 
@@ -154,32 +153,7 @@ namespace PersonalDiaries
             dr.Close();
             conn.Dispose();
 
-            //conn = new OracleConnection(ordb);
-            //conn.Open();
-
-            //OracleCommand cmd = new OracleCommand();
-            //cmd.Connection = conn;
-            //cmd.CommandType = CommandType.Text;
-            //cmd.CommandText = "select darkmode from  Users where username =:userName";
-            //cmd.Parameters.Add("userName", Login.username);
-            //OracleDataReader dr = cmd.ExecuteReader();
-
-
-            //dr.Read();
-
-            //if (dr[0].ToString() == "1")
-            //{
-            //    this.BackColor = Color.FromArgb(34, 36, 49);
-            //    this.ForeColor = Color.White;
-            //}
-            //else
-            //{
-            //    this.BackColor = Color.White;
-            //    this.ForeColor = Color.Black;
-            //}
-
-            //dr.Close();
-            //conn.Dispose();
+            
         }
     }
 }

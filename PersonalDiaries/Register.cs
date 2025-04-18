@@ -1,4 +1,5 @@
 ﻿using Oracle.DataAccess.Client;
+using Personal_Diary_Application;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace PersonalDiaries
     {
         string ordb = "Data source=orcl;User Id=scott; Password=tiger;";
         OracleConnection conn;
-
+        
         public Register()
         {
             InitializeComponent();

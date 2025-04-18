@@ -32,6 +32,8 @@
             this.SaveButton = new System.Windows.Forms.Button();
             this.textBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.textBoxOFtitle = new System.Windows.Forms.TextBox();
+            this.comboBoxOFTags = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // SaveButton
@@ -58,15 +60,34 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // textBoxOFtitle
+            // 
+            this.textBoxOFtitle.Location = new System.Drawing.Point(308, 66);
+            this.textBoxOFtitle.Name = "textBoxOFtitle";
+            this.textBoxOFtitle.Size = new System.Drawing.Size(156, 24);
+            this.textBoxOFtitle.TabIndex = 2;
+            // 
+            // comboBoxOFTags
+            // 
+            this.comboBoxOFTags.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOFTags.FormattingEnabled = true;
+            this.comboBoxOFTags.Location = new System.Drawing.Point(576, 39);
+            this.comboBoxOFTags.Name = "comboBoxOFTags";
+            this.comboBoxOFTags.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxOFTags.TabIndex = 3;
+            // 
             // Diary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBoxOFTags);
+            this.Controls.Add(this.textBoxOFtitle);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.SaveButton);
             this.Name = "Diary";
             this.Text = "Diary";
+            this.Load += new System.EventHandler(this.Diary_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,5 +98,7 @@
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox textBoxOFtitle;
+        private System.Windows.Forms.ComboBox comboBoxOFTags;
     }
 }

@@ -197,12 +197,21 @@ namespace Personal_Diary_Application
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            diaryId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            isNew = false;
+            try
+            {
+                diaryId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                isNew = false;
 
-            Diary form = new Diary();
-            form.Show();
-            this.Hide();
+                Diary form = new Diary();
+                form.Show();
+                this.Hide();
+            }
+            catch
+            {
+                MessageBox.Show("Please select a valid diary entry.");
+                return;
+            }
+           
         }
     }
 }

@@ -17,7 +17,6 @@ namespace PersonalDiaries
     {
         string ordb = "Data source=orcl;User Id=scott;Password=tiger;";
         OracleConnection conn;
-        public static int userId;
         
         public Diary()
         {
@@ -26,7 +25,7 @@ namespace PersonalDiaries
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if( textBoxOFtitle.Text.Trim(' ').Length == 0 || textBox.Text.Trim(' ').Length == 0 || comboBoxOFTags.Text.Trim(' ').Length == 0)
+            if( textBoxOFtitle.Text.Trim(' ').Length == 0 || textBox.Text.Trim(' ').Length == 0)
             {
                 MessageBox.Show(" Nigga -___- ");
                 return;
@@ -35,27 +34,31 @@ namespace PersonalDiaries
             conn.Open();
 
             OracleCommand cmd = new OracleCommand();
-            OracleDataReader dr;
+            OracleDataReader dr=null;
             //Get User ID
-            cmd = new OracleCommand();
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select userid from  Users where username =:userName";
-            cmd.Parameters.Add("userName", Login.username);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            userId = Convert.ToInt32(dr[0]);
-            cmd.Parameters.Clear();
+            //cmd = new OracleCommand();
+            //cmd.Connection = conn;
+            //cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "select userid from  Users where username =:userName";
+            //cmd.Parameters.Add("userName", Login.username);
+            //dr = cmd.ExecuteReader();
+            //dr.Read();
+            //userId = Convert.ToInt32(dr[0]);
+            //cmd.Parameters.Clear();
 
             //Get Tag ID
+            int tagId=0;
             cmd.Connection = conn;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select tagid from tags where tagname = :name";
-            cmd.Parameters.Add("name", comboBoxOFTags.SelectedItem.ToString());
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            int tagId = Convert.ToInt32(dr[0]);
-            cmd.Parameters.Clear();
+            if (comboBoxOFTags.SelectedItem != null)
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select tagid from tags where tagname = :name";
+                cmd.Parameters.Add("name", comboBoxOFTags.SelectedItem.ToString());
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                tagId = Convert.ToInt32(dr[0]);
+                cmd.Parameters.Clear();
+            }
 
             
 
@@ -81,13 +84,15 @@ namespace PersonalDiaries
                 cmd.Parameters.Clear();
 
                 cmd.CommandText = "Insert into diaries(userid, diaryid, title, text, tagid) values (:id,:diaryid,:title,:text,:tagid)";
-                cmd.Parameters.Add("id", userId);
+                cmd.Parameters.Add("id", Home.userId);
                 cmd.Parameters.Add("diaryid", last_diary_Id);
                 cmd.Parameters.Add("title", textBoxOFtitle.Text);
                 cmd.Parameters.Add("text", textBox.Text);
-                cmd.Parameters.Add("tagid", tagId);
+                if (tagId == 0)
+                    cmd.Parameters.Add("tagid", DBNull.Value);
+                else
+                    cmd.Parameters.Add("tagid", tagId);
                 MessageBox.Show("Added");
-
 
             }
             else
@@ -99,20 +104,26 @@ namespace PersonalDiaries
 
                 cmd.Parameters.Add("title", textBoxOFtitle.Text);
                 cmd.Parameters.Add("text", textBox.Text);
-                cmd.Parameters.Add("tagid", tagId);
-                cmd.Parameters.Add("id", userId);
+                if (tagId == 0)
+                    cmd.Parameters.Add("tagid", DBNull.Value);
+                else
+                    cmd.Parameters.Add("tagid", tagId);
+                cmd.Parameters.Add("id", Home.userId);
                 cmd.Parameters.Add("diaryid", Home.diaryId);
                 MessageBox.Show("Updated");
             }
 
 
+
+            cmd.ExecuteNonQuery();
+            if(dr != null)
+                dr.Close();
+            conn.Dispose();
+
             Home form = new Home();
             form.Show();
             this.Hide();
 
-            cmd.ExecuteNonQuery();
-            dr.Close();
-            conn.Dispose();
         }
 
         private void Diary_Load(object sender, EventArgs e)
@@ -136,9 +147,11 @@ namespace PersonalDiaries
                 comboBoxOFTags.Items.Add(dr[0]);
                 tags.Add(dr[0].ToString());
             }
+            statusLabel.Text = "New Diary";
 
-            if(!Home.isNew)
+            if (!Home.isNew)
             {
+                statusLabel.Text = "Edit Diary";
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "select title,text ,tagid from diaries where diaryid = :id";
                 cmd.Parameters.Add("id",Home.diaryId);
@@ -146,14 +159,23 @@ namespace PersonalDiaries
                 dr.Read();
                 textBoxOFtitle.Text = dr[0].ToString();
                 textBox.Text = dr[1].ToString();
-                comboBoxOFTags.Text = tags[Convert.ToInt32(dr[2])-1];
+                if (dr[2] != DBNull.Value)
+                    comboBoxOFTags.Text = tags[Convert.ToInt32(dr[2])-1];
                 cmd.Parameters.Clear();
             }
+
 
             dr.Close();
             conn.Dispose();
 
             
+        }
+
+        private void back_Button_Click(object sender, EventArgs e)
+        {
+            Home form = new Home();
+            form.Show();
+            this.Hide();
         }
     }
 }

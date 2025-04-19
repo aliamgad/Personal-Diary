@@ -175,6 +175,8 @@ namespace PersonalDiaries
 
             if (!Home.isNew)
             {
+                textBoxOFtitle.ForeColor = Color.Black;
+                textBox.ForeColor = Color.Black;
                 statusLabel.Text = "Edit Diary";
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "select title,text ,tagid from diaries where diaryid = :id";

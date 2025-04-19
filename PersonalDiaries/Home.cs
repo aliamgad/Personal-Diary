@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,12 +40,14 @@ namespace Personal_Diary_Application
 
             if (dark_mode_btn.Checked)
             {
+                darkMode = "1";
                 cmd.CommandText = "update Users set darkmode = 1 where username =:userName";
                 this.BackColor = Color.FromArgb(34, 36, 49);
                 dark_mode_btn.ForeColor = Color.White;
             }
             else
             {
+                darkMode = "0";
                 cmd.CommandText = "update Users set darkMode = 0 where username =:userName";
                 this.BackColor = Color.White;
                 dark_mode_btn.ForeColor = Color.Black;
@@ -104,7 +107,6 @@ namespace Personal_Diary_Application
 
             darkMode = dr[0].ToString();
 
-
             if (darkMode == "1")
             {
                 dark_mode_btn.Checked = true;
@@ -116,6 +118,33 @@ namespace Personal_Diary_Application
                 this.BackColor = Color.White;
                 dark_mode_btn.ForeColor = Color.Black;
             }
+
+            //conn = new OracleConnection(ordb);
+            //conn.Open();
+
+            //OracleCommand cmd4 = new OracleCommand();
+            //cmd4.Connection = conn;
+
+
+            //if (darkMode == "1")
+            //{
+            //    dark_mode_btn.Checked = true;
+            //    cmd4.CommandText = "update Users set darkmode = 1 where username =:userName";
+            //    this.BackColor = Color.FromArgb(34, 36, 49);
+            //    dark_mode_btn.ForeColor = Color.White;
+            //}
+            //else
+            //{
+            //    cmd4.CommandText = "update Users set darkMode = 0 where username =:userName";
+            //    this.BackColor = Color.White;
+            //    dark_mode_btn.ForeColor = Color.Black;
+            //}
+
+            //cmd4.Parameters.Add("userName", Login.username);
+            //cmd4.ExecuteNonQuery();
+
+
+
 
             dr.Close();
             conn.Dispose();
@@ -212,6 +241,13 @@ namespace Personal_Diary_Application
                 return;
             }
            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            WelcomeMenu form = new WelcomeMenu();
+            form.Show();
+            this.Hide();
         }
     }
 }

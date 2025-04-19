@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Personal_Diary_Application;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,21 @@ namespace PersonalDiaries
         public Reminder()
         {
             InitializeComponent();
+        }
+
+        private void Reminder_Load(object sender, EventArgs e)
+        {
+            if (Home.darkMode == "1")
+            {
+
+                this.BackColor = Color.FromArgb(34, 36, 49);
+            }
+            else
+            {
+                this.BackColor = Color.White;
+            }
+
+
         }
     }
 }

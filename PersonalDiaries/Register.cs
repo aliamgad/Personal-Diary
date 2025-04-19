@@ -82,6 +82,7 @@ namespace PersonalDiaries
                 if (rowsInserted > 0)
                 {
                     MessageBox.Show("User registered successfully!");
+                    Login.username = textBox1.Text;
                     Home f = new Home();
                     f.Show();
                     this.Hide();

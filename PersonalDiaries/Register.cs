@@ -24,6 +24,12 @@ namespace PersonalDiaries
 
         private void Register_Load(object sender, EventArgs e)
         {
+            textBox1.Text = "Enter Username";
+            textBox2.Text = "Enter Email";
+            textBox3.Text = "Enter Password";
+            textBox1.ForeColor = Color.Gray;
+            textBox2.ForeColor = Color.Gray;
+            textBox3.ForeColor = Color.Gray;
             conn = new OracleConnection(ordb);
             conn.Open();
 
@@ -31,6 +37,16 @@ namespace PersonalDiaries
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "Enter Username" || textBox2.Text == "Enter Email" || textBox3.Text == "Enter Password")
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+            if (textBox1.Text.Trim(' ').Length == 0 || textBox2.Text.Trim(' ').Length == 0 || textBox3.Text.Trim(' ').Length == 0)
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
             int newID, maxID;
 
             try
@@ -106,5 +122,56 @@ namespace PersonalDiaries
             f.Show();
             this.Hide();
         }
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Enter Username")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
+        }
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Enter Username";
+                textBox1.ForeColor = Color.Gray;
+            }
+        }
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "Enter Email")
+            {
+                textBox2.Text = "";
+                textBox2.ForeColor = Color.Black;
+            }
+        }
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.Text = "Enter Email";
+                textBox2.ForeColor = Color.Gray;
+            }
+        }
+        private void textBox3_Enter(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "Enter Password")
+            {
+                textBox3.Text = "";
+                textBox3.ForeColor = Color.Black;
+                textBox3.UseSystemPasswordChar = true;
+            }
+        }
+        private void textBox3_Leave(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "")
+            {
+                textBox3.Text = "Enter Password";
+                textBox3.ForeColor = Color.Gray;
+                textBox3.UseSystemPasswordChar = false;
+            }
+        }
+
     }
 }

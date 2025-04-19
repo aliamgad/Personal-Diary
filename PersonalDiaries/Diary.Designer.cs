@@ -36,6 +36,7 @@
             this.comboBoxOFTags = new System.Windows.Forms.ComboBox();
             this.statusLabel = new System.Windows.Forms.Label();
             this.back_Button = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SaveButton
@@ -58,6 +59,8 @@
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(560, 317);
             this.textBox.TabIndex = 1;
+            this.textBox.Enter += new System.EventHandler(this.textBox_Enter);
+            this.textBox.Leave += new System.EventHandler(this.textBox_Leave);
             // 
             // contextMenuStrip1
             // 
@@ -73,6 +76,8 @@
             this.textBoxOFtitle.Name = "textBoxOFtitle";
             this.textBoxOFtitle.Size = new System.Drawing.Size(156, 24);
             this.textBoxOFtitle.TabIndex = 2;
+            this.textBoxOFtitle.Enter += new System.EventHandler(this.textBoxOFtitle_Enter);
+            this.textBoxOFtitle.Leave += new System.EventHandler(this.textBoxOFtitle_Leave);
             // 
             // comboBoxOFTags
             // 
@@ -103,11 +108,22 @@
             this.back_Button.UseVisualStyleBackColor = true;
             this.back_Button.Click += new System.EventHandler(this.back_Button_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label1.Location = new System.Drawing.Point(700, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 21);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Select Tag";
+            // 
             // Diary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.back_Button);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.comboBoxOFTags);
@@ -132,5 +148,6 @@
         private System.Windows.Forms.ComboBox comboBoxOFTags;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Button back_Button;
+        private System.Windows.Forms.Label label1;
     }
 }

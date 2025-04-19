@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PersonalDiaries
 {
@@ -27,10 +28,19 @@ namespace PersonalDiaries
         {
             conn = new OracleConnection(ordb);
             conn.Open();
+            textBox1.Text = "Enter Username";
+            textBox2.Text = "Enter Passowrd";
+            textBox1.ForeColor = Color.Gray;
+            textBox2.ForeColor = Color.Gray;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "Enter Username" || textBox2.Text == "Enter Passowrd")
+            {
+                MessageBox.Show("Please enter your username and password.");
+                return;
+            }
             username = textBox1.Text.ToString();
             string password = textBox2.Text.ToString();
 
@@ -65,6 +75,44 @@ namespace PersonalDiaries
             WelcomeMenu form = new WelcomeMenu();
             form.Show();
             this.Hide();
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Enter Username")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Enter Username";
+                textBox1.ForeColor = Color.Gray;
+            }
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "Enter Passowrd")
+            {
+                textBox2.Text = "";
+                textBox2.ForeColor = Color.Black;
+                textBox2.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.Text = "Enter Passowrd";
+                textBox2.ForeColor = Color.Gray;
+                textBox2.UseSystemPasswordChar = false;
+            }
         }
     }
 }

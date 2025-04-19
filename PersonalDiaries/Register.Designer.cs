@@ -37,33 +37,39 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(285, 126);
+            this.textBox1.Location = new System.Drawing.Point(249, 126);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(211, 22);
+            this.textBox1.Size = new System.Drawing.Size(185, 24);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Enter Username";
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(284, 173);
+            this.textBox2.Location = new System.Drawing.Point(248, 173);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(211, 22);
+            this.textBox2.Size = new System.Drawing.Size(185, 24);
             this.textBox2.TabIndex = 1;
             this.textBox2.Text = "Enter Email";
+            this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(285, 221);
+            this.textBox3.Location = new System.Drawing.Point(249, 221);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(211, 22);
+            this.textBox3.Size = new System.Drawing.Size(185, 24);
             this.textBox3.TabIndex = 2;
             this.textBox3.Text = "Enter Password";
+            this.textBox3.Enter += new System.EventHandler(this.textBox3_Enter);
+            this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(285, 290);
+            this.button1.Location = new System.Drawing.Point(249, 290);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(210, 40);
+            this.button1.Size = new System.Drawing.Size(184, 40);
             this.button1.TabIndex = 3;
             this.button1.Text = "Register";
             this.button1.UseVisualStyleBackColor = true;
@@ -71,9 +77,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 12);
+            this.button2.Location = new System.Drawing.Point(10, 12);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 40);
+            this.button2.Size = new System.Drawing.Size(71, 40);
             this.button2.TabIndex = 4;
             this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
@@ -81,9 +87,9 @@
             // 
             // Register
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(700, 450);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox3);

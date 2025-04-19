@@ -65,6 +65,11 @@ namespace PersonalDiaries
             cmd.CommandType = CommandType.Text;
             if(Home.isNew)
             {
+                if(textBoxOFtitle.Text == "Title Here...." || textBox.Text == "Entry Here.....")
+                {
+                    MessageBox.Show("Please enter a title and text for the diary entry.");
+                    return;
+                }
                 //Get Last Diary id + 1
                 int maxId, last_diary_Id;
                 cmd.CommandType = CommandType.Text;
@@ -97,6 +102,11 @@ namespace PersonalDiaries
             }
             else
             {
+                if (textBoxOFtitle.Text == "Title Here...." || textBox.Text == "Entry Here.....")
+                {
+                    MessageBox.Show("Please enter a title and text for the diary entry.");
+                    return;
+                }
 
                 cmd.CommandText = @"update diaries 
                                     set  title= :title , text= :text , tagid= :tagid
@@ -128,7 +138,12 @@ namespace PersonalDiaries
 
         private void Diary_Load(object sender, EventArgs e)
         {
-            
+            textBoxOFtitle.Text = "Title Here....";
+            textBox.Text = "Entry Here.....";
+            textBoxOFtitle.ForeColor = Color.White;
+            textBox.ForeColor = Color.White;
+            statusLabel.Text = "New Diary";
+
             conn = new OracleConnection(ordb);
             conn.Open();
 
@@ -140,14 +155,15 @@ namespace PersonalDiaries
             cmd = new OracleCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select tagname from tags ORDER by tagid";
+            cmd.CommandText = "select tagname from tags where userid = :id ORDER by tagid";
+            cmd.Parameters.Add("id", Home.userId);
             dr = cmd.ExecuteReader();
             while(dr.Read())
             {
                 comboBoxOFTags.Items.Add(dr[0]);
                 tags.Add(dr[0].ToString());
             }
-            statusLabel.Text = "New Diary";
+           cmd.Parameters.Clear();
 
             if (!Home.isNew)
             {
@@ -176,6 +192,42 @@ namespace PersonalDiaries
             Home form = new Home();
             form.Show();
             this.Hide();
+        }
+
+        private void textBoxOFtitle_Enter(object sender, EventArgs e)
+        {
+            if (textBoxOFtitle.Text == "Title Here....")
+            {
+                textBoxOFtitle.Text = "";
+                textBoxOFtitle.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBoxOFtitle_Leave(object sender, EventArgs e)
+        {
+            if (textBoxOFtitle.Text == "")
+            {
+                textBoxOFtitle.Text = "Title Here....";
+                textBoxOFtitle.ForeColor = Color.White;
+            }
+        }
+
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            if (textBox.Text == "Entry Here.....")
+            {
+                textBox.Text = "";
+                textBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            if (textBox.Text == "")
+            {
+                textBox.Text = "Entry Here.....";
+                textBox.ForeColor = Color.White;
+            }
         }
     }
 }

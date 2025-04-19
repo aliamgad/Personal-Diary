@@ -201,7 +201,8 @@ namespace Personal_Diary_Application
                             d.diaryid,d.title, t.tagName,d.createdAt
                             FROM Diaries d
                             LEFT JOIN Tags t ON d.tagId = t.tagId
-                            WHERE d.userId =:id";
+                            WHERE d.userId =:id
+                            ORDER by d.title";
             }
             else
             {
@@ -209,7 +210,8 @@ namespace Personal_Diary_Application
                             d.diaryid,d.title, t.tagName,d.createdAt
                             FROM Diaries d
                             LEFT JOIN Tags t ON d.tagId = t.tagId
-                            WHERE d.userId =:id and t.tagname=:name";
+                            WHERE d.userId =:id and t.tagname=:name
+                            ORDER by d.title";
             }
             
             OracleDataAdapter adapter = new OracleDataAdapter(cmdstr, ordb);

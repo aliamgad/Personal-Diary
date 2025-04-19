@@ -42,10 +42,10 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(97, 32);
-            this.SaveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SaveButton.Location = new System.Drawing.Point(113, 39);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(64, 19);
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 0;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -54,11 +54,12 @@
             // textBox
             // 
             this.textBox.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox.Location = new System.Drawing.Point(85, 83);
-            this.textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.textBox.Location = new System.Drawing.Point(99, 102);
+            this.textBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.textBox.Multiline = true;
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(481, 258);
+            this.textBox.Size = new System.Drawing.Size(560, 317);
             this.textBox.TabIndex = 1;
             this.textBox.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox.Leave += new System.EventHandler(this.textBox_Leave);
@@ -72,10 +73,10 @@
             // textBoxOFtitle
             // 
             this.textBoxOFtitle.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxOFtitle.Location = new System.Drawing.Point(264, 54);
-            this.textBoxOFtitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxOFtitle.Location = new System.Drawing.Point(308, 66);
+            this.textBoxOFtitle.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.textBoxOFtitle.Name = "textBoxOFtitle";
-            this.textBoxOFtitle.Size = new System.Drawing.Size(134, 20);
+            this.textBoxOFtitle.Size = new System.Drawing.Size(156, 24);
             this.textBoxOFtitle.TabIndex = 2;
             this.textBoxOFtitle.Enter += new System.EventHandler(this.textBoxOFtitle_Enter);
             this.textBoxOFtitle.Leave += new System.EventHandler(this.textBoxOFtitle_Leave);
@@ -84,27 +85,28 @@
             // 
             this.comboBoxOFTags.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOFTags.FormattingEnabled = true;
-            this.comboBoxOFTags.Location = new System.Drawing.Point(566, 36);
-            this.comboBoxOFTags.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxOFTags.Location = new System.Drawing.Point(660, 44);
+            this.comboBoxOFTags.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.comboBoxOFTags.Name = "comboBoxOFTags";
-            this.comboBoxOFTags.Size = new System.Drawing.Size(104, 21);
+            this.comboBoxOFTags.Size = new System.Drawing.Size(121, 24);
             this.comboBoxOFTags.TabIndex = 3;
             // 
             // statusLabel
             // 
             this.statusLabel.Font = new System.Drawing.Font("Tahoma", 15F);
-            this.statusLabel.Location = new System.Drawing.Point(276, 7);
+            this.statusLabel.Location = new System.Drawing.Point(322, 9);
+            this.statusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(122, 28);
+            this.statusLabel.Size = new System.Drawing.Size(142, 34);
             this.statusLabel.TabIndex = 4;
             this.statusLabel.Text = "New Diary";
             // 
             // back_Button
             // 
-            this.back_Button.Location = new System.Drawing.Point(10, 10);
-            this.back_Button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.back_Button.Location = new System.Drawing.Point(12, 12);
+            this.back_Button.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.back_Button.Name = "back_Button";
-            this.back_Button.Size = new System.Drawing.Size(60, 33);
+            this.back_Button.Size = new System.Drawing.Size(70, 41);
             this.back_Button.TabIndex = 5;
             this.back_Button.Text = "Back";
             this.back_Button.UseVisualStyleBackColor = true;
@@ -114,18 +116,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label1.Location = new System.Drawing.Point(489, 37);
+            this.label1.Location = new System.Drawing.Point(570, 46);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 17);
+            this.label1.Size = new System.Drawing.Size(88, 21);
             this.label1.TabIndex = 6;
             this.label1.Text = "Select Tag";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(582, 328);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Location = new System.Drawing.Point(679, 404);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 33);
+            this.button1.Size = new System.Drawing.Size(103, 41);
             this.button1.TabIndex = 6;
             this.button1.Text = "Export";
             this.button1.UseVisualStyleBackColor = true;
@@ -133,9 +136,9 @@
             // 
             // Diary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 372);
+            this.ClientSize = new System.Drawing.Size(796, 458);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.back_Button);
@@ -144,7 +147,7 @@
             this.Controls.Add(this.textBoxOFtitle);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.SaveButton);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "Diary";
             this.Text = "Diary";
             this.Load += new System.EventHandler(this.Diary_Load);

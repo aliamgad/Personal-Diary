@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,16 +38,6 @@ namespace PersonalDiaries
 
             OracleCommand cmd = new OracleCommand();
             OracleDataReader dr=null;
-            //Get User ID
-            //cmd = new OracleCommand();
-            //cmd.Connection = conn;
-            //cmd.CommandType = CommandType.Text;
-            //cmd.CommandText = "select userid from  Users where username =:userName";
-            //cmd.Parameters.Add("userName", Login.username);
-            //dr = cmd.ExecuteReader();
-            //dr.Read();
-            //userId = Convert.ToInt32(dr[0]);
-            //cmd.Parameters.Clear();
 
             //Get Tag ID
             int tagId=0;
@@ -98,7 +91,6 @@ namespace PersonalDiaries
                 else
                     cmd.Parameters.Add("tagid", tagId);
                 MessageBox.Show("Added");
-
             }
             else
             {
@@ -138,6 +130,22 @@ namespace PersonalDiaries
 
         private void Diary_Load(object sender, EventArgs e)
         {
+            if (Home.darkMode == "1")
+            {
+
+                this.BackColor = Color.FromArgb(34, 36, 49);
+                statusLabel.ForeColor = Color.White;
+                label1.ForeColor = Color.White;
+            }
+            else
+            {
+                this.BackColor = Color.White;
+                statusLabel.ForeColor = Color.Black;
+                label1.ForeColor = Color.Black;
+            }
+
+
+
             textBoxOFtitle.Text = "Title Here....";
             textBox.Text = "Entry Here.....";
             textBoxOFtitle.ForeColor = Color.White;
@@ -194,6 +202,32 @@ namespace PersonalDiaries
             this.Hide();
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+            if (textBoxOFtitle.Text.Trim(' ').Length == 0 || textBox.Text.Trim(' ').Length == 0)
+            {
+                MessageBox.Show(" Nigga -___- ");
+                return;
+            }
+
+            string exportFolder = @"..\..\Exported Diaries"; // Specify the folder path  
+            if (!Directory.Exists(exportFolder))
+            {
+                Directory.CreateDirectory(exportFolder); // Create the folder if it doesn't exist  
+            }
+            string dirParameter = Path.Combine(exportFolder, textBoxOFtitle.Text + ".txt");
+            string Msg = textBox.Text;
+            FileStream fParameter = new FileStream(dirParameter, FileMode.Create, FileAccess.Write);
+            StreamWriter m_WriterParameter = new StreamWriter(fParameter);
+            m_WriterParameter.BaseStream.Seek(0, SeekOrigin.End);
+            m_WriterParameter.Write(Msg);
+            m_WriterParameter.Flush();
+            m_WriterParameter.Close();
+
+            MessageBox.Show("Exported Successfully");
+        }
+
         private void textBoxOFtitle_Enter(object sender, EventArgs e)
         {
             if (textBoxOFtitle.Text == "Title Here....")
@@ -229,5 +263,9 @@ namespace PersonalDiaries
                 textBox.ForeColor = Color.White;
             }
         }
+
+
     }
+
+
 }

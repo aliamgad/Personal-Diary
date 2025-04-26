@@ -69,14 +69,22 @@ namespace PersonalDiaries
                 MessageBox.Show("Tag name is empty");
                 return;
             }
+
+            for(int i=0;i < comboBox1.Items.Count;i++)
+            {
+                if (comboBox1.Items.IndexOf(textBox1.Text.ToLower())!=-1)
+                {
+                    MessageBox.Show("Don't put the same Tag more than one");
+                    return;
+                }    
+            }
+
             conn = new OracleConnection(ordb);
             conn.Open();
 
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
             int newID, maxID;
-
-            string new_tag = textBox1.Text.ToString();
 
             OracleCommand getIdCmd = new OracleCommand("GetTagID", conn);
             getIdCmd.CommandType = CommandType.StoredProcedure;
@@ -94,8 +102,6 @@ namespace PersonalDiaries
                 newID = 1;
             }
 
-
-
             OracleCommand insertCmd = new OracleCommand();
             insertCmd.Connection = conn;
 
@@ -104,23 +110,24 @@ namespace PersonalDiaries
 
             insertCmd.Parameters.Add("id", OracleDbType.Int32).Value = newID;
             insertCmd.Parameters.Add("userid", OracleDbType.Int32).Value = Home.userId;
-            insertCmd.Parameters.Add("new_tag", OracleDbType.Varchar2).Value = textBox1.Text;
+            insertCmd.Parameters.Add("new_tag", OracleDbType.Varchar2).Value = textBox1.Text.ToLower();
 
             int rowsInserted = insertCmd.ExecuteNonQuery();
 
             if (rowsInserted > 0)
             {
-
-                comboBox1.Items.Add(textBox1.Text);
+                comboBox1.Items.Add(textBox1.Text.ToLower());
                 textBox1.Text = "";
                 MessageBox.Show("Tag added successfully!");
-                
             }
             else
             {
                 MessageBox.Show("Insertion failed.");
             }
+
             conn.Close();
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -152,7 +152,7 @@ namespace PersonalDiaries
 
             
             comboBox1.Items.RemoveAt(comboBox1.SelectedIndex);
-           
+            textBox1.Text = "";
             MessageBox.Show("Done deletion");
 
             comboBox1.Text = "";

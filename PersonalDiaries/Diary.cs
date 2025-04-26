@@ -207,9 +207,9 @@ namespace PersonalDiaries
         private void button1_Click_1(object sender, EventArgs e)
         {
 
-            if (textBoxOFtitle.Text.Trim(' ').Length == 0 || textBox.Text.Trim(' ').Length == 0)
+            if (textBoxOFtitle.Text.Trim(' ').Length == 0 || textBox.Text.Trim(' ').Length == 0 || textBoxOFtitle.Text== "Title Here...." || textBox.Text== "Entry Here.....")
             {
-                MessageBox.Show(" Nigga -___- ");
+                MessageBox.Show(" Realy -___-  the Text fields  are empty");
                 return;
             }
 

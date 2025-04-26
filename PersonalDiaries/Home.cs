@@ -20,7 +20,6 @@ namespace Personal_Diary_Application
         string ordb = "Data source=orcl;User Id=scott; Password=tiger;";
         OracleConnection conn;
 
-        
         public static string darkMode;
         public static bool isNew;
         public static int userId;
@@ -272,7 +271,14 @@ namespace Personal_Diary_Application
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void reminder_Button_Click(object sender, EventArgs e)
+        {
+            Reminder form = new Reminder();
+            form.Show();
+            this.Hide();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
             //if (!Login.username.Equals("admin", StringComparison.OrdinalIgnoreCase))
             //{
@@ -281,14 +287,6 @@ namespace Personal_Diary_Application
             //}
 
             AdminForm form = new AdminForm();
-            form.Show();
-            this.Hide();
-
-        }
-
-        private void reminder_Button_Click(object sender, EventArgs e)
-        {
-            Reminder form = new Reminder();
             form.Show();
             this.Hide();
         }

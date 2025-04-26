@@ -118,11 +118,23 @@ namespace Personal_Diary_Application
             this.reminder_Button.UseVisualStyleBackColor = true;
             this.reminder_Button.Click += new System.EventHandler(this.reminder_Button_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(574, 275);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 49);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Admin Form";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 390);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.reminder_Button);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.comboBox2);
@@ -148,5 +160,6 @@ namespace Personal_Diary_Application
         private ComboBox comboBox2;
         private Button button2;
         private Button reminder_Button;
+        private Button button1;
     }
 }

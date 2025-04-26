@@ -18,8 +18,10 @@ namespace Personal_Diary_Application
     {
         string ordb = "Data source=orcl;User Id=scott; Password=tiger;";
         OracleConnection conn;
+        private readonly string _loggedInUser;
 
-        
+
+
         public static string darkMode;
         public static bool isNew;
         public static int userId;
@@ -27,6 +29,12 @@ namespace Personal_Diary_Application
         public Home()
         {
             InitializeComponent();
+            bool isAdmin = Login.username.Equals("admin", StringComparison.OrdinalIgnoreCase) && Login.password.Equals("1", StringComparison.OrdinalIgnoreCase);
+
+            if (isAdmin)
+                button1.Visible = true;
+            else
+                button1.Visible = false;
         }
         
         private void dark_mode_btn_CheckedChanged(object sender, EventArgs e)
@@ -250,6 +258,20 @@ namespace Personal_Diary_Application
             WelcomeMenu form = new WelcomeMenu();
             form.Show();
             this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //if (!Login.username.Equals("admin", StringComparison.OrdinalIgnoreCase))
+            //{
+            //    MessageBox.Show("Access denied.");
+            //    return;
+            //}
+
+            AdminForm form = new AdminForm();
+            form.Show();
+            this.Hide();
+
         }
     }
 }

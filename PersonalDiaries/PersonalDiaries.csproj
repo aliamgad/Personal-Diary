@@ -33,12 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\app\Ahmed\product\11.2.0\dbhome_1\ODP.NET\bin\2.x\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,11 +92,35 @@
     <Compile Include="Reminder.Designer.cs">
       <DependentUpon>Reminder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tag_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tag_Report.Designer.cs">
+      <DependentUpon>Tag_Report.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tags.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tags.Designer.cs">
       <DependentUpon>Tags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TagsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TagsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Users_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users_Report.Designer.cs">
+      <DependentUpon>Users_Report.cs</DependentUpon>
     </Compile>
     <Compile Include="WelcomeMenu.cs">
       <SubType>Form</SubType>
@@ -127,8 +157,22 @@
     <EmbeddedResource Include="Reminder.resx">
       <DependentUpon>Reminder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tags.resx">
       <DependentUpon>Tags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TagsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TagsReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tag_Report.resx">
+      <DependentUpon>Tag_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users_Report.resx">
+      <DependentUpon>Users_Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WelcomeMenu.resx">
       <DependentUpon>WelcomeMenu.cs</DependentUpon>
@@ -145,6 +189,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

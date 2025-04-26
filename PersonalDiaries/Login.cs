@@ -17,7 +17,10 @@ namespace PersonalDiaries
     {
         string ordb = "Data source=orcl;User Id=scott; Password=tiger;";
         OracleConnection conn;
+
+        public static string user_id;
         public static string username;
+        public static string password;
         
         public Login()
         {
@@ -42,27 +45,40 @@ namespace PersonalDiaries
                 return;
             }
             username = textBox1.Text.ToString();
-            string password = textBox2.Text.ToString();
+            password = textBox2.Text.ToString();
 
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT COUNT(*) FROM Users WHERE username = :username AND password = :password";
+            cmd.CommandText = "SELECT count(*) FROM Users WHERE username = :username AND password = :password";
             cmd.Parameters.Add("username", username);
             cmd.Parameters.Add("password", password);
             cmd.CommandType = CommandType.Text;
 
 
+            //OracleDataReader reader = cmd.ExecuteReader();
+
+            //if (reader.Read())
+            //{
+            //    user_id = reader[0].ToString();
+            //    MessageBox.Show("Login successful!");
+            //    Home f = new Home();
+            //    f.Show();
+            //    this.Hide();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Invalid username or password.");
+            //}
+
             int userExists = Convert.ToInt32(cmd.ExecuteScalar());
 
             if (userExists > 0)
             {
-                
                 MessageBox.Show("Login successful!");
                 Home f = new Home();
                 f.Show();
                 this.Hide();
-                
             }
             else
             {

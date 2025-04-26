@@ -166,12 +166,12 @@ namespace PersonalDiaries
             cmd.CommandText = "select tagname from tags where userid = :id ORDER by tagid";
             cmd.Parameters.Add("id", Home.userId);
             dr = cmd.ExecuteReader();
-            while(dr.Read())
+            while (dr.Read())
             {
                 comboBoxOFTags.Items.Add(dr[0]);
                 tags.Add(dr[0].ToString());
             }
-           cmd.Parameters.Clear();
+            cmd.Parameters.Clear();
 
             if (!Home.isNew)
             {
@@ -180,13 +180,13 @@ namespace PersonalDiaries
                 statusLabel.Text = "Edit Diary";
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "select title,text ,tagid from diaries where diaryid = :id";
-                cmd.Parameters.Add("id",Home.diaryId);
+                cmd.Parameters.Add("id", Home.diaryId);
                 dr = cmd.ExecuteReader();
                 dr.Read();
                 textBoxOFtitle.Text = dr[0].ToString();
                 textBox.Text = dr[1].ToString();
                 if (dr[2] != DBNull.Value)
-                    comboBoxOFTags.Text = tags[Convert.ToInt32(dr[2])-1];
+                    comboBoxOFTags.Text = tags[Convert.ToInt32(dr[2]) - 1];
                 cmd.Parameters.Clear();
             }
 
@@ -194,7 +194,7 @@ namespace PersonalDiaries
             dr.Close();
             conn.Dispose();
 
-            
+
         }
 
         private void back_Button_Click(object sender, EventArgs e)

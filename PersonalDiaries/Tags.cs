@@ -24,12 +24,17 @@ namespace PersonalDiaries
 
         private void Tags_Load(object sender, EventArgs e)
         {
+            textBox1.Text = "Enter new tag";
+            textBox1.ForeColor = Color.Gray;
+
+            comboBox1.Text = "Select tag to be removed";
+            comboBox1.ForeColor = Color.Gray;
+
             conn = new OracleConnection(ordb);
             conn.Open();
 
             if (Home.darkMode == "1")
             {
-
                 this.BackColor = Color.FromArgb(34, 36, 49);
             }
             else
@@ -41,7 +46,7 @@ namespace PersonalDiaries
             cmd.Connection = conn;
 
             cmd.CommandText = "select tagName from Tags where userId =: user_id";
-            cmd.Parameters.Add("user_id", Login.user_id);
+            cmd.Parameters.Add("user_id", Home.userId);
             cmd.CommandType = CommandType.Text;
 
             OracleDataReader reader = cmd.ExecuteReader();
@@ -52,11 +57,21 @@ namespace PersonalDiaries
             }
 
             reader.Close();
+            conn.Close();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            if(textBox1.Text== "Enter new tag" || textBox1.Text==null)
+            {
+                MessageBox.Show("Tag name is empty");
+                return;
+            }
+            conn = new OracleConnection(ordb);
+            conn.Open();
+
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
             int newID, maxID;
@@ -84,21 +99,20 @@ namespace PersonalDiaries
             OracleCommand insertCmd = new OracleCommand();
             insertCmd.Connection = conn;
 
-            string username = Login.username;
-        
-
-
             insertCmd.CommandText = "Insert INTO Tags (tagId, userId, tagName) VALUES (:id, :userid, :new_tag)";
             insertCmd.CommandType = CommandType.Text;
 
             insertCmd.Parameters.Add("id", OracleDbType.Int32).Value = newID;
-            insertCmd.Parameters.Add("userid", OracleDbType.Int32).Value = Login.user_id;
+            insertCmd.Parameters.Add("userid", OracleDbType.Int32).Value = Home.userId;
             insertCmd.Parameters.Add("new_tag", OracleDbType.Varchar2).Value = textBox1.Text;
 
             int rowsInserted = insertCmd.ExecuteNonQuery();
 
             if (rowsInserted > 0)
             {
+
+                comboBox1.Items.Add(textBox1.Text);
+                textBox1.Text = "";
                 MessageBox.Show("Tag added successfully!");
                 
             }
@@ -106,16 +120,24 @@ namespace PersonalDiaries
             {
                 MessageBox.Show("Insertion failed.");
             }
-
+            conn.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (comboBox1.Text == "Select tag to be removed" || comboBox1.SelectedItem==null)
+            {
+                MessageBox.Show("Select a existing tag");
+                return;
+            }
+            conn = new OracleConnection(ordb);
+            conn.Open();
+
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
 
             cmd.CommandText = "Delete from Tags where userId =: u_id and tagName =: t_name";
-            cmd.Parameters.Add("u_id", Login.user_id);
+            cmd.Parameters.Add("u_id", Home.userId);
             cmd.Parameters.Add("t_name", comboBox1.SelectedItem.ToString());
             cmd.CommandType = CommandType.Text;
 
@@ -123,20 +145,11 @@ namespace PersonalDiaries
 
             
             comboBox1.Items.RemoveAt(comboBox1.SelectedIndex);
+           
             MessageBox.Show("Done deletion");
-            
 
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
+            comboBox1.Text = "";
+            conn.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -144,6 +157,42 @@ namespace PersonalDiaries
             Home form = new Home();
             form.Show();
             this.Close();
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Enter new tag")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Enter new tag";
+                textBox1.ForeColor = Color.Gray;
+            }
+        }
+
+        private void comboBox1_Enter(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "Select tag to be removed")
+            {
+                comboBox1.Text = "";
+                comboBox1.ForeColor = Color.Black;
+            }
+        }
+
+        private void comboBox1_Leave(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "")
+            {
+                comboBox1.Text = "Select tag to be removed";
+                comboBox1.ForeColor = Color.Gray;
+            }
         }
     }
 }

@@ -50,17 +50,31 @@ namespace PersonalDiaries
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT userId FROM Users WHERE username = :username AND password = :password";
+            cmd.CommandText = "SELECT count(*) FROM Users WHERE username = :username AND password = :password";
             cmd.Parameters.Add("username", username);
             cmd.Parameters.Add("password", password);
             cmd.CommandType = CommandType.Text;
 
 
-            OracleDataReader reader = cmd.ExecuteReader();
+            //OracleDataReader reader = cmd.ExecuteReader();
 
-            if (reader.Read())
+            //if (reader.Read())
+            //{
+            //    user_id = reader[0].ToString();
+            //    MessageBox.Show("Login successful!");
+            //    Home f = new Home();
+            //    f.Show();
+            //    this.Hide();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Invalid username or password.");
+            //}
+
+            int userExists = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (userExists > 0)
             {
-                user_id = reader[0].ToString();
                 MessageBox.Show("Login successful!");
                 Home f = new Home();
                 f.Show();
@@ -70,23 +84,6 @@ namespace PersonalDiaries
             {
                 MessageBox.Show("Invalid username or password.");
             }
-
-            //int userExists = Convert.ToInt32(cmd.ExecuteScalar());
-
-            //if (userExists > 0)
-            //{
-            //    cmd.CommandText = "select userId from Users where username = :username";
-
-            //    MessageBox.Show("Login successful!");
-            //    Home f = new Home();
-            //    f.Show();
-            //    this.Hide();
-
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Invalid username or password.");
-            //}
         }
 
         private void button2_Click(object sender, EventArgs e)

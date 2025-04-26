@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using Personal_Diary_Application;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PersonalDiaries
 {
@@ -136,12 +137,14 @@ namespace PersonalDiaries
                 this.BackColor = Color.FromArgb(34, 36, 49);
                 statusLabel.ForeColor = Color.White;
                 label1.ForeColor = Color.White;
+                labelOFsearch.ForeColor = Color.White;
             }
             else
             {
                 this.BackColor = Color.White;
                 statusLabel.ForeColor = Color.Black;
                 label1.ForeColor = Color.Black;
+                labelOFsearch.ForeColor = Color.Black;
             }
 
 
@@ -158,8 +161,6 @@ namespace PersonalDiaries
             OracleCommand cmd = new OracleCommand();
             OracleDataReader dr;
 
-            List<String> tags = new List<String>();
-            //Get User ID
             cmd = new OracleCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.Text;
@@ -169,7 +170,6 @@ namespace PersonalDiaries
             while(dr.Read())
             {
                 comboBoxOFTags.Items.Add(dr[0]);
-                tags.Add(dr[0].ToString());
             }
            cmd.Parameters.Clear();
 
@@ -185,8 +185,18 @@ namespace PersonalDiaries
                 dr.Read();
                 textBoxOFtitle.Text = dr[0].ToString();
                 textBox.Text = dr[1].ToString();
-                if (dr[2] != DBNull.Value)
-                    comboBoxOFTags.Text = tags[Convert.ToInt32(dr[2])-1];
+                int tagId = Convert.ToInt32(dr[2]);
+                cmd.Parameters.Clear();
+
+                cmd.CommandText = "select tagname from tags where tagid = :id";
+                cmd.Parameters.Add("id", tagId);
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                if (dr[0] != DBNull.Value)
+                {
+                    comboBoxOFTags.Text = dr[0].ToString();
+                }
+
                 cmd.Parameters.Clear();
             }
 
@@ -266,7 +276,44 @@ namespace PersonalDiaries
             }
         }
 
+        private void textBoxOFsearch_TextChanged(object sender, EventArgs e)
+        {
+            //Revert the text box to its original color
+            textBox.SelectAll();
+            textBox.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
 
+            string[] words = textBoxOFsearch.Text.Split(',');
+
+            foreach (string wordRaw in words)
+            {
+                string word = wordRaw.Trim();
+                if (string.IsNullOrEmpty(word)) continue;
+
+                int startindex = 0;
+                while (startindex < textBox.TextLength)
+                {
+                    // First try to find as a whole word
+                    int wordstartIndex = textBox.Find(word, startindex, RichTextBoxFinds.WholeWord);
+                    if (wordstartIndex == -1)
+                    {
+                        // If not found as a whole word, try to find as substring
+                        wordstartIndex = textBox.Find(word, startindex, RichTextBoxFinds.None);
+                    }
+
+                    if (wordstartIndex != -1)
+                    {
+                        textBox.SelectionStart = wordstartIndex;
+                        textBox.SelectionLength = word.Length;
+                        textBox.SelectionBackColor = Color.Yellow;
+                        startindex = wordstartIndex + word.Length;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+        }
     }
 
 

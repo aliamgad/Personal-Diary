@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.textBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.textBoxOFtitle = new System.Windows.Forms.TextBox();
             this.comboBoxOFTags = new System.Windows.Forms.ComboBox();
@@ -38,6 +37,9 @@
             this.back_Button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBoxOFsearch = new System.Windows.Forms.TextBox();
+            this.labelOFsearch = new System.Windows.Forms.Label();
+            this.textBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // SaveButton
@@ -50,19 +52,6 @@
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox
-            // 
-            this.textBox.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.textBox.Location = new System.Drawing.Point(99, 102);
-            this.textBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.textBox.Multiline = true;
-            this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(560, 317);
-            this.textBox.TabIndex = 1;
-            this.textBox.Enter += new System.EventHandler(this.textBox_Enter);
-            this.textBox.Leave += new System.EventHandler(this.textBox_Leave);
             // 
             // contextMenuStrip1
             // 
@@ -85,7 +74,7 @@
             // 
             this.comboBoxOFTags.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOFTags.FormattingEnabled = true;
-            this.comboBoxOFTags.Location = new System.Drawing.Point(660, 44);
+            this.comboBoxOFTags.Location = new System.Drawing.Point(662, 66);
             this.comboBoxOFTags.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.comboBoxOFTags.Name = "comboBoxOFTags";
             this.comboBoxOFTags.Size = new System.Drawing.Size(121, 24);
@@ -116,7 +105,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label1.Location = new System.Drawing.Point(570, 46);
+            this.label1.Location = new System.Drawing.Point(566, 69);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 21);
@@ -125,27 +114,58 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(679, 404);
+            this.button1.Location = new System.Drawing.Point(12, 66);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 41);
+            this.button1.Size = new System.Drawing.Size(70, 44);
             this.button1.TabIndex = 6;
             this.button1.Text = "Export";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // textBoxOFsearch
+            // 
+            this.textBoxOFsearch.Location = new System.Drawing.Point(572, 18);
+            this.textBoxOFsearch.Name = "textBoxOFsearch";
+            this.textBoxOFsearch.Size = new System.Drawing.Size(212, 24);
+            this.textBoxOFsearch.TabIndex = 7;
+            this.textBoxOFsearch.TextChanged += new System.EventHandler(this.textBoxOFsearch_TextChanged);
+            // 
+            // labelOFsearch
+            // 
+            this.labelOFsearch.AutoSize = true;
+            this.labelOFsearch.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelOFsearch.Location = new System.Drawing.Point(505, 17);
+            this.labelOFsearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelOFsearch.Name = "labelOFsearch";
+            this.labelOFsearch.Size = new System.Drawing.Size(60, 21);
+            this.labelOFsearch.TabIndex = 8;
+            this.labelOFsearch.Text = "Search";
+            // 
+            // textBox
+            // 
+            this.textBox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox.Location = new System.Drawing.Point(113, 103);
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(574, 318);
+            this.textBox.TabIndex = 9;
+            this.textBox.Text = "";
             // 
             // Diary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 458);
+            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.labelOFsearch);
+            this.Controls.Add(this.textBoxOFsearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.back_Button);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.comboBoxOFTags);
             this.Controls.Add(this.textBoxOFtitle);
-            this.Controls.Add(this.textBox);
             this.Controls.Add(this.SaveButton);
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "Diary";
@@ -159,7 +179,6 @@
         #endregion
 
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox textBoxOFtitle;
         private System.Windows.Forms.ComboBox comboBoxOFTags;
@@ -167,5 +186,8 @@
         private System.Windows.Forms.Button back_Button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxOFsearch;
+        private System.Windows.Forms.Label labelOFsearch;
+        private System.Windows.Forms.RichTextBox textBox;
     }
 }

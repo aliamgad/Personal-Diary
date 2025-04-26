@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -146,7 +147,48 @@ namespace Personal_Diary_Application
             dr3.Close();
             conn.Dispose();
 
-            
+
+            //////////////////////////////////////////////////////////////////////////////
+            conn = new OracleConnection(ordb);
+            conn.Open();
+            OracleCommand cmd5 = new OracleCommand();
+            cmd5.Connection = conn;
+            cmd5.CommandType = CommandType.Text;
+            cmd5.CommandText = "select reminderdate , remindertext from reminders where userid =:id";
+            cmd5.Parameters.Add("id", userId);
+            OracleDataReader dr5 = cmd5.ExecuteReader();
+            bool exist = false;
+            if (dr5.Read())
+            {
+                DateTime reminderDate = Convert.ToDateTime(dr5["reminderdate"]);
+                if (reminderDate.Date == DateTime.Now.Date)
+                {
+                    MessageBox.Show("Your Reminder for today: " + dr5[1]);
+                    exist = true;
+                }
+                else if (reminderDate.Date < DateTime.Now.Date)
+                {
+                    MessageBox.Show("You missed a reminder!");
+                    exist = true;
+                }
+                
+                if(exist == true)
+                {
+                    OracleCommand cmd4 = new OracleCommand();
+                    cmd4.Connection = conn;
+                    cmd4.CommandType = CommandType.Text;
+                    cmd4.CommandText = "Delete From reminders where userid=:usId";
+
+                    cmd4.Parameters.Add("usId", Home.userId);
+                    cmd4.ExecuteNonQuery();
+                    exist = false;
+                }
+            }
+
+            dr5.Close();
+            conn.Dispose();
+
+
         }
 
         private void New_Diary_Click(object sender, EventArgs e)

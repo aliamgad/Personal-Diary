@@ -119,32 +119,6 @@ namespace Personal_Diary_Application
                 dark_mode_btn.ForeColor = Color.Black;
             }
 
-            //conn = new OracleConnection(ordb);
-            //conn.Open();
-
-            //OracleCommand cmd4 = new OracleCommand();
-            //cmd4.Connection = conn;
-
-
-            //if (darkMode == "1")
-            //{
-            //    dark_mode_btn.Checked = true;
-            //    cmd4.CommandText = "update Users set darkmode = 1 where username =:userName";
-            //    this.BackColor = Color.FromArgb(34, 36, 49);
-            //    dark_mode_btn.ForeColor = Color.White;
-            //}
-            //else
-            //{
-            //    cmd4.CommandText = "update Users set darkMode = 0 where username =:userName";
-            //    this.BackColor = Color.White;
-            //    dark_mode_btn.ForeColor = Color.Black;
-            //}
-
-            //cmd4.Parameters.Add("userName", Login.username);
-            //cmd4.ExecuteNonQuery();
-
-
-
 
             dr.Close();
             conn.Dispose();
@@ -168,8 +142,6 @@ namespace Personal_Diary_Application
             {
                 comboBox2.Items.Add(dr3[0]);
             }
-
-            //comboBox2.SelectedIndex = 0;
 
             dr3.Close();
             conn.Dispose();
@@ -248,6 +220,13 @@ namespace Personal_Diary_Application
         private void button2_Click(object sender, EventArgs e)
         {
             WelcomeMenu form = new WelcomeMenu();
+            form.Show();
+            this.Hide();
+        }
+
+        private void reminder_Button_Click(object sender, EventArgs e)
+        {
+            Reminder form = new Reminder();
             form.Show();
             this.Hide();
         }

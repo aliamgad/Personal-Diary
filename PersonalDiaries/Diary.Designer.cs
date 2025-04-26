@@ -130,6 +130,7 @@
             this.textBoxOFsearch.Size = new System.Drawing.Size(212, 24);
             this.textBoxOFsearch.TabIndex = 7;
             this.textBoxOFsearch.TextChanged += new System.EventHandler(this.textBoxOFsearch_TextChanged);
+            this.textBoxOFsearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxOFsearch_KeyDown);
             // 
             // labelOFsearch
             // 
@@ -151,6 +152,7 @@
             this.textBox.Size = new System.Drawing.Size(574, 318);
             this.textBox.TabIndex = 9;
             this.textBox.Text = "";
+            this.textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // Diary
             // 
@@ -171,6 +173,7 @@
             this.Name = "Diary";
             this.Text = "Diary";
             this.Load += new System.EventHandler(this.Diary_Load);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Diary_MouseClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -21,7 +21,11 @@ namespace PersonalDiaries
     {
         string ordb = "Data source=orcl;User Id=scott;Password=tiger;";
         OracleConnection conn;
-        
+        private List<int> matchPositions = new List<int>();
+        private int currentMatchIndex = -1;
+        private bool isSearching = false;
+        private int pos = 0;
+
         public Diary()
         {
             InitializeComponent();
@@ -278,9 +282,12 @@ namespace PersonalDiaries
 
         private void textBoxOFsearch_TextChanged(object sender, EventArgs e)
         {
-            //Revert the text box to its original color
+
+            // Reset highlights and matches
             textBox.SelectAll();
             textBox.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            matchPositions.Clear();
+            currentMatchIndex = -1;
 
             string[] words = textBoxOFsearch.Text.Split(',');
 
@@ -292,11 +299,9 @@ namespace PersonalDiaries
                 int startindex = 0;
                 while (startindex < textBox.TextLength)
                 {
-                    // First try to find as a whole word
                     int wordstartIndex = textBox.Find(word, startindex, RichTextBoxFinds.WholeWord);
                     if (wordstartIndex == -1)
                     {
-                        // If not found as a whole word, try to find as substring
                         wordstartIndex = textBox.Find(word, startindex, RichTextBoxFinds.None);
                     }
 
@@ -305,6 +310,8 @@ namespace PersonalDiaries
                         textBox.SelectionStart = wordstartIndex;
                         textBox.SelectionLength = word.Length;
                         textBox.SelectionBackColor = Color.Yellow;
+
+                        matchPositions.Add(wordstartIndex); // Save match position
                         startindex = wordstartIndex + word.Length;
                     }
                     else
@@ -314,7 +321,81 @@ namespace PersonalDiaries
                 }
             }
         }
+
+        private void textBoxOFsearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && matchPositions.Count > 0)
+            {
+                e.SuppressKeyPress = true; // prevent "ding" sound on Enter
+                isSearching = true; // Set the flag to indicate that we are searching
+                currentMatchIndex++;
+                if (currentMatchIndex >= matchPositions.Count)
+                    currentMatchIndex = 0; // loop back to start
+
+                int pos = matchPositions[currentMatchIndex];
+                textBox.Focus();
+                textBox.SelectionStart = pos + textBoxOFsearch.TextLength;
+                textBox.SelectionLength = 0;
+                textBox.ScrollToCaret();
+
+            }
+        }
+
+        private void textBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            int length = textBoxOFsearch.TextLength;
+            if (e.KeyCode == Keys.Enter && matchPositions.Count > 0 && isSearching)
+            {
+                e.SuppressKeyPress = true; // prevent "ding" sound on Enter
+
+                currentMatchIndex++;
+                if (currentMatchIndex >= matchPositions.Count)
+                    currentMatchIndex = 0; // loop back to start
+
+                pos = matchPositions[currentMatchIndex];
+                textBox.SelectionStart = pos + textBoxOFsearch.TextLength;
+                textBox.SelectionLength = 0;
+                textBox.ScrollToCaret();
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                
+                // Reset the search
+                isSearching = false;
+                currentMatchIndex = -1;
+                textBoxOFsearch.Clear();
+
+                textBox.SelectionStart = pos + length+1;
+                textBox.SelectionLength = 0;
+                textBox.ScrollToCaret();
+
+
+            }
+            else
+            {
+                if (isSearching)
+                {
+                    
+                    SendKeys.Send("{ESC}");
+                    
+                }
+            }
+
+        }
+
+        private void Diary_MouseClick(object sender, MouseEventArgs e)
+        {
+            isSearching = false; // Reset the flag when clicking outside the search box
+            currentMatchIndex = -1;
+            textBoxOFsearch.Clear();
+
+            textBox.SelectionStart = pos + textBoxOFsearch.TextLength;
+            textBox.SelectionLength = 0;
+            textBox.ScrollToCaret();
+
+        }
     }
-
-
 }
+
+
+

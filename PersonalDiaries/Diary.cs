@@ -70,6 +70,7 @@ namespace PersonalDiaries
                 }
                 //Get Last Diary id + 1
                 int maxId, last_diary_Id;
+
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "select max(diaryId) from Diaries";
 
@@ -158,7 +159,7 @@ namespace PersonalDiaries
             textBoxOFtitle.ForeColor = Color.White;
             textBox.ForeColor = Color.White;
             statusLabel.Text = "New Diary";
-
+            delete_Button.Visible = false;
             conn = new OracleConnection(ordb);
             conn.Open();
 
@@ -189,17 +190,26 @@ namespace PersonalDiaries
                 dr.Read();
                 textBoxOFtitle.Text = dr[0].ToString();
                 textBox.Text = dr[1].ToString();
-                int tagId = Convert.ToInt32(dr[2]);
-                cmd.Parameters.Clear();
-
-                cmd.CommandText = "select tagname from tags where tagid = :id";
-                cmd.Parameters.Add("id", tagId);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                if (dr[0] != DBNull.Value)
+                int tagId= -1;
+                if (dr[2] != DBNull.Value)
                 {
-                    comboBoxOFTags.Text = dr[0].ToString();
+                    tagId = Convert.ToInt32(dr[2]);
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "select tagname from tags where tagid = :id";
+                    cmd.Parameters.Add("id", tagId);
+                    dr = cmd.ExecuteReader();
+                    dr.Read();
+                    if (dr[0] != DBNull.Value)
+                    {
+                        comboBoxOFTags.Text = dr[0].ToString();
+                    }
                 }
+                else
+                {
+                    comboBoxOFTags.Text = "";
+                }
+                delete_Button.Visible = true;
 
                 cmd.Parameters.Clear();
             }
@@ -272,6 +282,24 @@ namespace PersonalDiaries
         }
 
         private void textBox_Leave(object sender, EventArgs e)
+        {
+            if (textBox.Text == "")
+            {
+                textBox.Text = "Entry Here.....";
+                textBox.ForeColor = Color.White;
+            }
+        }
+
+        private void textBox_Enter_1(object sender, EventArgs e)
+        {
+            if (textBox.Text == "Entry Here.....")
+            {
+                textBox.Text = "";
+                textBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox_Leave_1(object sender, EventArgs e)
         {
             if (textBox.Text == "")
             {
@@ -393,6 +421,26 @@ namespace PersonalDiaries
             textBox.SelectionLength = 0;
             textBox.ScrollToCaret();
 
+        }
+
+        private void delete_Button_Click(object sender, EventArgs e)
+        {
+            conn = new OracleConnection(ordb);
+            conn.Open();
+
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from diaries where diaryid = :id";
+            cmd.Parameters.Add("id", Home.diaryId);
+
+            cmd.ExecuteNonQuery();
+            conn.Dispose();
+
+            MessageBox.Show("Deleted successfully");
+            Home form = new Home();
+            form.Show();
+            this.Hide();
         }
     }
 }

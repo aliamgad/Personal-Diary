@@ -40,6 +40,7 @@
             this.textBoxOFsearch = new System.Windows.Forms.TextBox();
             this.labelOFsearch = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.RichTextBox();
+            this.delete_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SaveButton
@@ -156,13 +157,26 @@
             this.textBox.Size = new System.Drawing.Size(574, 318);
             this.textBox.TabIndex = 9;
             this.textBox.Text = "";
+            this.textBox.Enter += new System.EventHandler(this.textBox_Enter_1);
             this.textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
+            this.textBox.Leave += new System.EventHandler(this.textBox_Leave_1);
+            // 
+            // delete_Button
+            // 
+            this.delete_Button.Location = new System.Drawing.Point(694, 406);
+            this.delete_Button.Name = "delete_Button";
+            this.delete_Button.Size = new System.Drawing.Size(90, 40);
+            this.delete_Button.TabIndex = 10;
+            this.delete_Button.Text = "Delete";
+            this.delete_Button.UseVisualStyleBackColor = true;
+            this.delete_Button.Click += new System.EventHandler(this.delete_Button_Click);
             // 
             // Diary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 458);
+            this.Controls.Add(this.delete_Button);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.labelOFsearch);
             this.Controls.Add(this.textBoxOFsearch);
@@ -177,6 +191,8 @@
             this.Name = "Diary";
             this.Text = "Diary";
             this.Load += new System.EventHandler(this.Diary_Load);
+            this.Enter += new System.EventHandler(this.textBox_Enter);
+            this.Leave += new System.EventHandler(this.textBox_Leave);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Diary_MouseClick);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -196,5 +212,6 @@
         private System.Windows.Forms.TextBox textBoxOFsearch;
         private System.Windows.Forms.Label labelOFsearch;
         private System.Windows.Forms.RichTextBox textBox;
+        private System.Windows.Forms.Button delete_Button;
     }
 }

@@ -44,10 +44,11 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(113, 39);
+            this.SaveButton.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.SaveButton.Location = new System.Drawing.Point(113, 35);
             this.SaveButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.Size = new System.Drawing.Size(97, 35);
             this.SaveButton.TabIndex = 0;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -62,10 +63,11 @@
             // textBoxOFtitle
             // 
             this.textBoxOFtitle.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxOFtitle.Font = new System.Drawing.Font("Tahoma", 10F);
             this.textBoxOFtitle.Location = new System.Drawing.Point(308, 66);
             this.textBoxOFtitle.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.textBoxOFtitle.Name = "textBoxOFtitle";
-            this.textBoxOFtitle.Size = new System.Drawing.Size(156, 24);
+            this.textBoxOFtitle.Size = new System.Drawing.Size(156, 28);
             this.textBoxOFtitle.TabIndex = 2;
             this.textBoxOFtitle.Enter += new System.EventHandler(this.textBoxOFtitle_Enter);
             this.textBoxOFtitle.Leave += new System.EventHandler(this.textBoxOFtitle_Leave);
@@ -92,6 +94,7 @@
             // 
             // back_Button
             // 
+            this.back_Button.Font = new System.Drawing.Font("Tahoma", 10F);
             this.back_Button.Location = new System.Drawing.Point(12, 12);
             this.back_Button.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.back_Button.Name = "back_Button";
@@ -114,6 +117,7 @@
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.button1.Location = new System.Drawing.Point(12, 66);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button1.Name = "button1";
@@ -146,7 +150,7 @@
             // textBox
             // 
             this.textBox.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox.Location = new System.Drawing.Point(113, 103);
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(574, 318);

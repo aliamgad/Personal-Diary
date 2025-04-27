@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Personal_Diary_Application;
 
 namespace PersonalDiaries
 {
@@ -21,6 +22,14 @@ namespace PersonalDiaries
         private void Users_Report_Load(object sender, EventArgs e)
         {
             CR = new Report();
+            if (Home.darkMode == "1")
+            {
+                this.BackColor = Color.FromArgb(34, 36, 49);
+            }
+            else
+            {
+                this.BackColor = Color.White;
+            }
         }
 
         private void generate_tag2_Click(object sender, EventArgs e)
@@ -30,7 +39,7 @@ namespace PersonalDiaries
 
         private void back_Button_Click(object sender, EventArgs e)
         {
-            Form form = new Form();
+            AdminForm form = new AdminForm();
             form.Show();
             this.Hide();
         }

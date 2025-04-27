@@ -67,6 +67,7 @@
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.button1.Location = new System.Drawing.Point(249, 290);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(184, 40);
@@ -77,6 +78,7 @@
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("Tahoma", 10F);
             this.button2.Location = new System.Drawing.Point(10, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(71, 40);

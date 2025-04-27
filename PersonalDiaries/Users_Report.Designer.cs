@@ -56,6 +56,7 @@ namespace PersonalDiaries
             // 
             // back_Button
             // 
+            this.back_Button.Font = new System.Drawing.Font("Tahoma", 10F);
             this.back_Button.Location = new System.Drawing.Point(28, 11);
             this.back_Button.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.back_Button.Name = "back_Button";

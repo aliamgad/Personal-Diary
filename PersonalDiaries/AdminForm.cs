@@ -20,12 +20,16 @@ namespace PersonalDiaries
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Tag_Report form = new Tag_Report();
+            form.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Users_Report form = new Users_Report();
+            form.Show();
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -33,6 +37,18 @@ namespace PersonalDiaries
             Home form  = new Home();
             form.Show();
             this.Hide();
+        }
+
+        private void AdminForm_Load(object sender, EventArgs e)
+        {
+            if (Home.darkMode == "1")
+            {
+                this.BackColor = Color.FromArgb(34, 36, 49);
+            }
+            else
+            {
+                this.BackColor = Color.White;
+            }
         }
     }
 }
